@@ -37,9 +37,13 @@ const list = [
 
 const FirstScreen = ({theme, navigation}) => {
   const {colors} = theme;
+
   const [objective, setObjective] = useState(null);
+
   const [adName, setAdName] = useState(null);
+
   const [apiInProgress, setApiInProgress] = useState(false);
+
   const dispatch = useDispatch();
 
   const onPressHandler = async () => {
@@ -74,7 +78,7 @@ const FirstScreen = ({theme, navigation}) => {
     <SafeAreaView
       style={[appStyles.container, {backgroundColor: colors.bluegem}]}>
       <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
-      <Header active={'first'} />
+      <Header active={'first'} navigation={navigation} />
       <View style={styles.conainer}>
         <InputField
           label="AD NAME"

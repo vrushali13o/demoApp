@@ -1,10 +1,10 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, withTheme} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {appStyles} from '../../utils/styles';
 
-const Header = ({theme, active}) => {
+const Header = ({theme, active, navigation}) => {
   const {colors} = theme;
 
   const activeCircleStyle = {
@@ -24,16 +24,22 @@ const Header = ({theme, active}) => {
     borderWidth: 1,
     borderColor: colors.lightGray,
   };
+
   return (
     <View style={[styles.container, {backgroundColor: colors.white}]}>
       <View style={styles.subContainer}>
-        <Icon name="chevron-left" size={40} color={colors.purple} />
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          disabled={active === 'first'}>
+          <Icon name="chevron-left" size={40} color={colors.purple} />
+        </TouchableOpacity>
         <View style={appStyles.centerAlignment}>
           <Icon name="snapchat" size={30} color={colors.purple} />
           <Text style={[styles.snapLabel, {color: colors.purple}]}>
             SNAP AD
           </Text>
         </View>
+
         <View style={appStyles.row}>
           <View style={appStyles.centerAlignment}>
             <View
@@ -68,6 +74,7 @@ const Header = ({theme, active}) => {
                 2
               </Text>
             </View>
+
             <Text
               style={[
                 styles.pageName,

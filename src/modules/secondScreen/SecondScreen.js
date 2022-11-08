@@ -18,8 +18,11 @@ const SecondScreen = ({theme, navigation}) => {
   const {colors} = theme;
 
   const [image, setImage] = useState(null);
+
   const [compaign, setCompaign] = useState(null);
+
   const [url, setUrl] = useState(null);
+
   const dispatch = useDispatch();
 
   const {objective} = useSelector(objctiveReducer => objctiveReducer);
@@ -28,9 +31,8 @@ const SecondScreen = ({theme, navigation}) => {
     if (compaign && image) {
       try {
         dispatch(addImage(image.uri));
-        if (url) {
-          dispatch(addUrl(url));
-        }
+        dispatch(addUrl(url));
+
         const payload = {
           name: compaign,
           website_url: image,
@@ -69,7 +71,7 @@ const SecondScreen = ({theme, navigation}) => {
     <SafeAreaView
       style={[appStyles.container, {backgroundColor: colors.purple}]}>
       <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
-      <Header active={'second'} />
+      <Header active={'second'} navigation={navigation} />
       <View style={styles.container}>
         <View style={[styles.inputContainer, {backgroundColor: colors.input}]}>
           <InputField

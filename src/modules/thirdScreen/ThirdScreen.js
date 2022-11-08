@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {withTheme, Text} from 'react-native-elements';
@@ -41,7 +42,9 @@ const ThirdScreen = ({theme, navigation}) => {
       headerShown: true,
       headerLeftContainerStyle: styles.leftContainer,
       headerLeft: () => (
-        <Icon name="chevron-left" size={30} color={colors.white} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="chevron-left" size={30} color={colors.white} />
+        </TouchableOpacity>
       ),
       headerStyle: {backgroundColor: colors.purple, elevation: 0},
       headerTitle: () => (
